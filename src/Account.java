@@ -69,6 +69,6 @@ public class Account implements InterfaceBankAccount{
 	    
 	    //print method 
 	    public void print() {
-	        System.out.println(getBankName()+" "+accountname + " " + accountnum + " " + balance);
+	        System.out.println("\nBank name: " + getBankName()+"\nAccount Holder: "+accountname + "\nAccount Number:  " + accountnum + "\nAccount Balance:  " + balance);
 	      }
 	}

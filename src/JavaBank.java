@@ -306,7 +306,7 @@ public class JavaBank extends JFrame {
         		myAccounts[noAccounts] = new Account(Name,Accountnum,Balance);        		
         		AccountNames[noAccounts] = "USED";        		
         		//System.out.println(myAccounts[noAccounts].getaccountname());
-        		//emptyAccount = i;         		
+        		//emptyAccount = i;
         		
         		displayJTextArea.setText(myAccounts[noAccounts].getaccountname() + " " + myAccounts[noAccounts].getaccountnum() + " " + myAccounts[noAccounts].getbalance());
         		noAccounts ++;
@@ -320,6 +320,13 @@ public class JavaBank extends JFrame {
         	 // Once account 10 is created. All accounts full.
         	displayJTextArea.setText("All Accounts Full!");
         }
+        for (int i = 0; i < noAccounts; i++){
+            displayAccountDetails(myAccounts[i].getBankName(),
+                    myAccounts[i].getaccountname(),
+                    myAccounts[i].getaccountnum(),
+                    myAccounts[i].getbalance());
+        }
+
         
      // clear other JTextFields for new data
         NameJTextField.setText(" ");
@@ -329,7 +336,14 @@ public class JavaBank extends JFrame {
         WithdrawJTextField.setText("0");            
       
     }
- 
+
+
+    private void displayAccountDetails(String bName, String aName, int num, int balance){
+        displayJTextArea.setText("Bank Name: "+ bName+
+                "\nAccount Holder: "+ aName+
+                "\nAccount Number: "+ num+
+                "\nAccount Balance: "+ balance);
+    }
     private void DeleteAccountJButtonActionPerformed(ActionEvent event) {
  
     	displayJTextArea.setText("Oops this isnt coded in this version!");
@@ -400,10 +414,8 @@ public class JavaBank extends JFrame {
     	}else {
     	for (int i=0; i<noAccounts; i++) { 
     		
-    			displayJTextArea.append(myAccounts[i].getaccountname() + " " + myAccounts[i].getaccountnum() + " " + myAccounts[i].getbalance() + "\n");
-         	    
-    		
-    		
+    			displayJTextArea.append("Account Holder: "+ myAccounts[i].getaccountname() + " Account Number: " + myAccounts[i].getaccountnum() + " Balance: " + myAccounts[i].getbalance() + "\n");
+
     	}
     	}
         // clear other JTextFields for new data
