@@ -1,4 +1,5 @@
 public final class CompanyColor {
+    //creates color background
     private final int R = 255;
     private final int G = 153;
     private final int B = 204;
