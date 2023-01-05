@@ -1,37 +1,48 @@
-
-public class Account implements InterfaceBankAccount{
+public class Account extends AbstractBankAccount{
 
 	// class variables
-		String accountname;
-	    int accountnum;
-	    int balance;
-	    
-	    //default constructor for Account
-	    Account()
-	    {
-	    	this.accountname="EMPTY";
-	    	this.accountnum=0;
-	    	this.balance=0;
-	    }
+	private int bonusValue;
+
 	    
 	    //overloaded constructor for Account
 	    Account(String name, int num,int amt)
 	    {
-	            accountname=name;
-	    	    accountnum=num;
-	            balance=amt;
+			super(name, num, (amt+calculateInitialBonusValue(amt)));
+			bonusValue = calculateInitialBonusValue(amt);
 	    }
+
+		private static int calculateInitialBonusValue(int amt){
+			//
+			if (amt>=1 && amt <=100){
+				return 10;
+			} else if (amt <= 300){
+				return 20;
+			} else {
+				return 30;
+			}
+		}
+
 	    //make a deposit to the balance
 	    public void deposit(int amt)
 	    {
-	    	    balance=balance+amt;
+			if (amt>100){
+				balance = (int) (balance + (amt+(int)bonusValue*0.1));
+			} else {
+				balance=balance+amt;
+			}
 	    }
 	    //make a withdrawal from the balance
 	    public void withdraw(int amt)
 	    {
 	    	    balance=balance-amt;
 	    }
-	    //modifier to set the accountname
+
+	@Override
+	public int getBalance() {
+		return balance;
+	}
+
+	//modifier to set the accountname
 	    public void setaccountname(String name)
 	    {
 	    	    accountname = name;
@@ -63,12 +74,17 @@ public class Account implements InterfaceBankAccount{
 	    	return balance;
 	    }
 
-		public String getBankName(){
-			return InterfaceBankAccount.BANK;
-		}
+	@Override
+	public String getBankName(){
+		return BANK;
+	}
 	    
 	    //print method 
-	    public void print() {
-	        System.out.println("\nBank name: " + getBankName()+"\nAccount Holder: "+accountname + "\nAccount Number:  " + accountnum + "\nAccount Balance:  " + balance);
-	      }
+		public void print() {
+			System.out.print("\nBank Name: "+getBankName()+
+					"\nAccount Holder: "+ accountname+
+					"\nAccount Number: "+ accountnum+
+					"\nBalance: $"+ balance +
+					"\n");
+		}
 	}

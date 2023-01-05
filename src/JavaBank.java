@@ -8,7 +8,8 @@ import javax.swing.border.*;
 public class JavaBank extends JFrame {
  
     /**
-	 * 
+	 * the master class that builds all the front end part using java Swing
+     * grabs info from other necessary classes
 	 */
 	private static final long serialVersionUID = 1L;
 	// Make these variables publicly available

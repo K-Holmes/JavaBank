@@ -1,7 +1,7 @@
 public final class CompanyColor {
-    private final int R = 238;
-    private final int G = 130;
-    private final int B = 238;
+    private final int R = 255;
+    private final int G = 153;
+    private final int B = 204;
 
     public int getR(){
         return R;
