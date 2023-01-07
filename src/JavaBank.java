@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.InputMismatchException;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -283,21 +284,34 @@ public class JavaBank extends JFrame {
     	Name = NameJTextField.getText();
     	
     	//Get Accountnum from Text Field and convert to int unless blank then set to 0
-    	if (AccountnumJTextField.getText() == "0") {
-    		Accountnum = 0;
-    	}
-    	else {
-    		Accountnum = Integer.parseInt(AccountnumJTextField.getText());
-    	}
-    
-    		
-    	//Get Balance from Text Field and convert to int unless blank then set to 0
-    	if (BalanceJTextField.getText() == "0") {
-    		Balance = 0;
-    	}
-    	else {
-    		Balance = Integer.parseInt(BalanceJTextField.getText());
-    	}
+        try {
+            if (AccountnumJTextField.getText() == "0") {
+                Accountnum = 0;
+            }
+            else {
+                Accountnum = Integer.parseInt(AccountnumJTextField.getText());
+            }
+
+
+            //Get Balance from Text Field and convert to int unless blank then set to 0
+            if (BalanceJTextField.getText() == "0") {
+                Balance = 0;
+            }
+            else {
+                Balance = Integer.parseInt(BalanceJTextField.getText());
+            }
+        } catch (NumberFormatException |InputMismatchException e){
+            Name = ("");
+            JOptionPane.showMessageDialog(null, "Incorrect n umeric value entered");
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            NameJTextField.setText(" ");
+            AccountnumJTextField.setText("0");
+            BalanceJTextField.setText("0");
+            DepositJTextField.setText("0");
+            WithdrawJTextField.setText("0");
+        }
         
         
         //int emptyAccount = 11;
