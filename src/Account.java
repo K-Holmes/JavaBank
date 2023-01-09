@@ -2,13 +2,15 @@ public class Account extends AbstractBankAccount{
 
 	// class variables
 	private int bonusValue;
+	private AccountType type;
 
 	    
 	    //overloaded constructor for Account
-	    Account(String name, int num,int amt)
+	    Account(String name, int num, int amt, AccountType type)
 	    {
 			super(name, num, (amt+calculateInitialBonusValue(amt)));
 			bonusValue = calculateInitialBonusValue(amt);
+			this.type=type;
 	    }
 
 		private static int calculateInitialBonusValue(int amt){
@@ -77,6 +79,11 @@ public class Account extends AbstractBankAccount{
 	@Override
 	public String getBankName(){
 		return BANK;
+	}
+
+	@Override
+	public String toString(){
+		return "\nAccountType : " + this.type + super.toString();
 	}
 	    
 	    //print method 
